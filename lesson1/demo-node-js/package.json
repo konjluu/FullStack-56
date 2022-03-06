@@ -1,0 +1,15 @@
+{
+  "name": "lesson-01",
+  "version": "1.0.0",
+  "description": "demo nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "axios": "^0.25.0"
+  }
+}
