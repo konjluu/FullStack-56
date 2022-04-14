@@ -1,8 +1,9 @@
-import React, {Component} from "react"
-import ProductList from "./ProductList"
-import ProductDetail from "./ProductDetail"
+import React, { Component } from "react";
+import ProductList from "./ProductList";
+import ProductDetail from "./ProductDetail";
+import Cart from "./Cart";
 
-const productData=[
+const productData = [
   {
     id: 1,
     name: "Samsung Galaxy A10",
@@ -45,36 +46,117 @@ const productData=[
     ram: "10 GB",
     rom: "64 GB",
   },
-]
+];
+
+const findProductItemList= (id,products)=>{
+  const SelectedProduct=products.find((product)=> product.id===id);
+  return SelectedProduct;
+}
 
 class StorePhone extends Component {
-    state ={
-        products:productData,
-        selectPhone:null,
-    }
+  state = {
+    products: productData,
+    selectedPhone: null,
+    cart: [],
+  };
 
 
-    onPhoneSelect=(id)=>{
-        const {products}=this.state;
-        const selectPhone = products.find((phone)=>phone.id===id);
-        this.setState({
-            selectPhone : selectPhone,
-        })
+  onPhoneSelect = (id) => {
+    const { products } = this.state;
+    const selectedPhone = findProductItemList(id,products);
+    this.setState({
+      selectedPhone: selectedPhone,
+    });
+  };
+
+  onAddToCart=(id)=>{
+    const {cart}=this.state;
+    const selectedPhone = findProductItemList(id,this.state.products);
+
+    const indxCart=this.state.cart.findIndex((CartItem)=>CartItem.id===id);
+
+    if(indxCart!== -1){
+      cart[indxCart].amount += 1;
+      this.setState({
+        cart:cart,
+      })
+    }else{
+      selectedPhone.amount=1;
+      this.setState({
+        cart:[...cart,selectedPhone],
+      })
     }
 
-    render(){
-        const {products,selectPhone}=this.state;
-        return(
-            <div className="container">
-                <h1>Store Phone</h1>
-                <ProductList products={products} 
-                             onPhoneSelect={this.onPhoneSelect} 
-                             title="Danh sach san pham"/>
-                <ProductDetail 
-                             selectPhone={selectPhone} />
-            </div>
-        )
-    }
+  }
+
+  onChangeAmount=(id,value)=>{
+    const {cart}=this.state;
+    const indxItemCart=cart.findIndex((cartItem)=> cartItem.id===id);
+    cart[indxItemCart]['amount']+=value;
+    this.setState({
+      cart:cart,
+    });
+
+  }
+
+  render() {
+    const { products, selectedPhone, cart } = this.state;
+    const CartSize = cart.length;
+    return (
+      <div className="container">
+        <h1>The Gioi Di Dong</h1>
+        <div className="d-flex justify-content-end">
+          <span
+            className="text-danger"
+            style={{
+              cursor: "pointer",
+            }}
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
+            Giỏ hàng ({CartSize})
+          </span>
+        </div>
+        <ProductList
+          products={products}
+          onPhoneSelect={this.onPhoneSelect}
+          title="Danh sach san pham"
+          onAddToCart={this.onAddToCart}
+          
+        />
+        <ProductDetail selectPhone={selectedPhone} />
+        < Cart cart={cart}
+              onChangeAmount={this.onChangeAmount}      
+        />
+      </div>
+    );
+  }
 }
 
 export default StorePhone;
+
+/*
+  ------------------------
+  -----COMPONENT TREE-----
+  ------------------------
+  SmartPhoneStore
+      Gio hang - button (so luong)
+      ProductList
+          ProductItem
+          ProductItem
+          ProductItem
+          ProductItem
+          ....
+      ProductDetail
+      Cart
+*/
+
+// Set State: cơ chế merging
+// useState: replacing
+// SEO = Search Engine Optimization
+// State structure, split component
+// Data binding, event handling, conditional rendering
+// CRUD - Create, Read, Update ,DELETE
+
+// Remove duplicate element in list
+// [1,2,4,5,6], k=10
