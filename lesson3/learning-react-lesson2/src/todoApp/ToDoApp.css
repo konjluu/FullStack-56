@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 18px;
+  }
+  :root {
+    --light-blue: #a8dadc;
+    --purple: #cdb4db;
+    --light-gray: #edf6f9;
+    --mint: #1ecac1;
+    --skin: #f7c59f;
+    --pink: #f08080;
+  }
+  .todo-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url(https://ze-robot.com/images/source/39669.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white;
+  }
+  .todo-container {
+    background-color: rgba(0, 0, 0, 0.5);
+  
+    width: 40vw;
+    border-radius: 0.5em;
+    padding: 2rem 1.8rem;
+  }
+  .add-item-input {
+  }
+  .todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5em;
+    padding: 0.5em 0.75em;
+    background-color: transparent;
+    color: black;
+    font-weight: 500;
+    max-height: 4em;
+    background-color: var(--mint);
+    border-radius: 0.5em;
+  }
+  .todo-item p {
+    width: 75%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 0;
+  }
+  .todo-item i {
+    cursor: pointer;
+  }
+  .todo-item.done {
+    text-decoration: line-through;
+  }
