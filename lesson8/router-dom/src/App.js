@@ -1,5 +1,6 @@
 import {BrowserRouter,Routes,Route,Link} from "react-router-dom"
 import './App.css';
+import Button,{ButtonSecondary,ButtonSuccess} from "./component/button";
 import AboutPage from "./container/About";
 import HomePage from "./container/Home";
 import NotFound from "./container/NotFound";
@@ -24,6 +25,7 @@ function App() {
           Don't Know-2
           </Link>
       </nav>
+      <Button>Hello</Button>
 
       <Routes>
          <Route path="/" element={<HomePage/>} />
