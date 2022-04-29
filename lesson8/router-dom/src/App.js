@@ -1,35 +1,21 @@
-import {BrowserRouter,Routes,Route,Link} from "react-router-dom"
+import {BrowserRouter,Routes,Route} from "react-router-dom"
 import './App.css';
-import Button,{ButtonSecondary,ButtonSuccess} from "./component/button";
 import AboutPage from "./container/About";
 import HomePage from "./container/Home";
 import NotFound from "./container/NotFound";
+import UserDetail from "./container/UserDetail";
+import Header from "./layout/Header";
+import SearchPage from "./container/SearchPage"
 
 function App() {
   return (
     <BrowserRouter>
-      <nav>
-          <Link to="/" className="me-2">
-            Home
-          </Link>
-
-          <Link to="/about" className="me-2">
-            About
-          </Link>
-
-          <Link to="/do not know 1" className="me-2">
-            Don't Know-1
-          </Link>
-
-          <Link to="/do not know 2" className="me-2">
-          Don't Know-2
-          </Link>
-      </nav>
-      <Button>Hello</Button>
-
+      <Header />
       <Routes>
          <Route path="/" element={<HomePage/>} />
+         <Route path="/search" element={<SearchPage/>} />
          <Route path="/about" element={<AboutPage/>} />
+         <Route path="/user/:login" element={<UserDetail/>} />
          <Route path="*" element={<NotFound/>} />
 
       </Routes>

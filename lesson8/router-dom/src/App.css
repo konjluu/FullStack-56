@@ -1,38 +1,168 @@
-.App {
-  text-align: center;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+:root {
+  --primary-color: #1877f2;
+  --grey-color: #e4e4e4;
+  --dark-color: #000;
+  --white-color: #fff;
+  --success-color: #28a745;
+}
+/* Global settings */
+a {
+  text-decoration: none;
+}
+ul {
+  margin-bottom: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.section-border {
+  border: 2px dotted var(--grey-color);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Button styling */
+.button {
+  border: none;
+  outline: none;
+  padding: 8px 16px;
+  background-color: var(--grey-color);
+  color: var(--dark-color);
+  transition: all 0.3s;
+}
+
+.button:hover {
+  opacity: 0.8;
+}
+
+.button-secondary {
+  background-color: var(--dark-color);
+  color: var(--white-color);
+}
+
+.button-full-width {
+  display: block;
+  width: 100%;
+}
+
+/* Input Filed styling */
+.search-input {
+  border: solid 2px var(--grey-color);
+  display: block;
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 24px;
+}
+
+/* Header  */
+header {
+  padding: 12px 32px;
+  background-color: var(--primary-color);
+}
+
+header .nav-brand {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--white-color);
+}
+header .nav-brand i {
+  margin-right: 8px;
+}
+
+header nav ul {
+  display: flex;
+  list-style: none;
+}
+header nav ul a {
+  color: var(--white-color);
+}
+header nav ul a:hover {
+  color: var(--white-color);
+  text-decoration: underline;
+}
+/* END Header */
+
+/* UserItem */
+
+.user-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 16px;
+  border: 1px dotted var(--grey-color);
+  gap: 16px;
+}
+.user-item {
+  margin-bottom: 24px;
+}
+.user-container img {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+  border-radius: 100rem;
+}
+.user-container button {
+  background-color: var(--grey-color);
+  padding: 8px 10px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  color: var(--dark-color);
+  transition: all 0.3s;
+}
+.user-container button:hover {
+  transform: scale(1.1);
+}
+/* End UserItem */
+
+/* User detail */
+.user-general-info {
+  padding: 24px;
 }
 
-.App-link {
-  color: #61dafb;
+.user-general-info__left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.user-general-info__left img {
+  width: 124px;
+  height: 124px;
+  object-fit: cover;
+  border-radius: 100rem;
+  border: 2px solid var(--dark-color);
+}
+
+.user-stats-info {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 16px;
+}
+
+.bagde {
+  border-radius: 4px;
+  padding: 6px 8px;
+  color: var(--white-color);
+}
+.bagde-1 {
+  background-color: var(--primary-color);
+}
+.bagde-2 {
+  background-color: var(--success-color);
+}
+.bagde-3 {
+  background-color: var(--grey-color);
+  color: var(--dark-color);
+}
+.bagde-4 {
+  background-color: var(--dark-color);
 }
