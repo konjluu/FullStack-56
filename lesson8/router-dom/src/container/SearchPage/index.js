@@ -1,8 +1,13 @@
-import React from 'react'
+import React,{useState}from 'react'
+
+import SearchUsers from '../../component/searchUsers';
 
 export const SearchPage = (props) => {
+    const [users,setUsers]=useState([]);
   return (
-    <div>SearchPage</div>
+    <div>
+        <SearchUsers />
+    </div>
   )
 }
 

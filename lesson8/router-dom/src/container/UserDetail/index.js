@@ -9,14 +9,14 @@ const UserDetail = () => {
 
     const urlParams=useParams();
     const {login}= urlParams
+    const empty = <h1>No Data-2</h1>
 
     useEffect(()=>{
         const fetchUserDetail =async ()=>{
             try{
-                const apiUserDetail= await UserApi.fetchUser({login});            
-                const apiResponseRepos=await UserApi.fetchRepos({login});
+                const apiUserDetail= await UserApi.fetchUserInfo(login);            
+                const apiResponseRepos=await UserApi.fetchRepos(login);
                 setUser(apiUserDetail.data);
-                console.log(apiResponseRepos.data)
                 setRepos(apiResponseRepos.data);
 
             }catch(error){
@@ -27,7 +27,15 @@ const UserDetail = () => {
     },[])
 
   return (
-    <div>{JSON.stringify(user)}</div>
+    <div>
+        {
+            user ?
+                JSON.stringify(user)
+                :
+                (empty)
+        }
+        
+    </div>
   )
 }
 
