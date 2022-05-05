@@ -1,14 +1,36 @@
 import axios from "axios"
-export const baseUrl="https://api.github.com";
+import axiosInstance from "../component/config"
 export const UserApi= {
     fetchUser : ()=>{
-        return axios.get(`${baseUrl}/users`)
+        return axiosInstance.get(`/users`)
     },
 
     fetchUserInfo :(username)=>{
-        return axios.get(`${baseUrl}/users/${username}`)
+        return axiosInstance.get(`/users/${username}`)
     },
     fetchRepos :(username)=>{
-        return axios.get(`${baseUrl}/users/${username}/repos`)
+        return axiosInstance.get(`/users/${username}/repos`)
+    },
+    searchUser :(keyword)=>{
+        return axiosInstance.get(`/search/users?q=${keyword}`)
     }
 }
+
+
+// import axios from "axios"
+// export const baseUrl="https://api.github.com";
+// export const UserApi= {
+//     fetchUser : ()=>{
+//         return axios.get(`/users`)
+//     },
+
+//     fetchUserInfo :(username)=>{
+//         return axios.get(`/users/${username}`)
+//     },
+//     fetchRepos :(username)=>{
+//         return axios.get(`/users/${username}/repos`)
+//     },
+//     searchUser :(keyword)=>{
+//         return axios.get(`/search/users?q=${keyword}`)
+//     }
+// }

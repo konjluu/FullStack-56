@@ -1,14 +1,43 @@
 import React, { useState } from 'react'
 import Button from '../Button';
-const SearchUsers = () => {
+const SearchUsers = (props) => {
     const [searchValue, setSearchValue] = useState('');
+
+    const onChangeHandler=(e)=>{
+        setSearchValue(e.target.value)
+
+    }
+
+    const onSubmitHandler=(e)=>{
+        e.preventDefault();
+        props.onSearchUser(searchValue)
+        setSearchValue("")
+    }
 
     return (
         <div className='search-users-container'>
-            <form >
-                <input />
-                <Button label="Search" type="secondary" FullWidth={true} />
-                <Button label="Clear users" type="primary" FullWidth={true} />
+            <form onSubmit={onSubmitHandler} >
+                <div>
+                    <input
+                        name="keyword"
+                        value={searchValue}
+                        onChange={onChangeHandler}
+                        className="search-input"
+                        placeholder='Enter key word'
+                    />
+                </div>
+                <Button 
+                    label="Search" 
+                    buttontype="secondary" 
+                    fullwidth={true} 
+                    type="submit"
+                    className="mb-2"
+                />
+                <Button label="Clear users" 
+                        buttontype="primary" 
+                        fullwidth={true}
+                        onClick={()=>props.onClearUser()}
+                 />
 
 
             </form>
