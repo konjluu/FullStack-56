@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import axios from "axios"
 import UserList from '../../component/userList';
-import { UserApi } from '../../services/UserApi';
+import { UserAPI } from '../../services/UserApi';
 
 const HomePage = () => {
     const [users, setUsers] = useState([]);
@@ -9,7 +8,7 @@ const HomePage = () => {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const apiResponse = await UserApi.fetchUser();
+                const apiResponse = await UserAPI.fetchUsers();
                 setUsers(apiResponse.data);
                 // setUsers([]);
             } catch (error) {

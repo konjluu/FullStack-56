@@ -1,20 +1,14 @@
-import axios from "axios"
-import axiosInstance from "../component/config"
-export const UserApi= {
-    fetchUser : ()=>{
-        return axiosInstance.get(`/users`)
-    },
+import axiosInstance from "../config/axios"
 
-    fetchUserInfo :(username)=>{
-        return axiosInstance.get(`/users/${username}`)
-    },
-    fetchRepos :(username)=>{
-        return axiosInstance.get(`/users/${username}/repos`)
-    },
-    searchUser :(keyword)=>{
-        return axiosInstance.get(`/search/users?q=${keyword}`)
-    }
-}
+export const UserAPI = {
+  fetchUsers: () => axiosInstance.get(`/users`),
+
+  fetchUserInfo: (username) => axiosInstance.get(`/users/${username}`),
+
+  fetchUserRepos: (username) => axiosInstance.get(`/users/${username}/repos`),
+
+  searchUser: (keyword) => axiosInstance.get(`/search/users?q=${keyword}`),
+};
 
 
 // import axios from "axios"

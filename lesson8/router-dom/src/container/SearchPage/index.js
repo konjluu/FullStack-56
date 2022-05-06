@@ -2,7 +2,7 @@ import React,{useState}from 'react'
 
 import SearchUsers from '../../component/searchUsers';
 import UserList from "../../component/userList"
-import { UserApi } from '../../services/UserApi';
+import { UserAPI } from '../../services/UserApi';
 
 export const SearchPage = (props) => {
     const [users,setUsers]=useState([]);
@@ -22,7 +22,7 @@ export const SearchPage = (props) => {
 
         setIsLoading(true);
         try{
-            const apiResponse=await UserApi.searchUser(keyword);
+            const apiResponse=await UserAPI.searchUser(keyword);
             const userData=apiResponse?.data?.items || [];
             setUsers(userData);
         }catch(error){
@@ -37,6 +37,8 @@ export const SearchPage = (props) => {
         setUsers([])
     }
 
+    const hasClearUser= users.length !==0;
+
   return (
     <div className='mt-5'>
         {isError && (
@@ -45,7 +47,7 @@ export const SearchPage = (props) => {
             </p>
         )
         }
-        <SearchUsers onSearchUser={onSearchUser} onClearUser={onClearUser} />
+        <SearchUsers onSearchUser={onSearchUser} onClearUser={onClearUser} hasClearUser={hasClearUser} />
         <UserList users={users} loading={isLoading} />
     </div>
   )

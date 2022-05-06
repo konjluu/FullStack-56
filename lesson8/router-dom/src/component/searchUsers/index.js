@@ -14,6 +14,8 @@ const SearchUsers = (props) => {
         setSearchValue("")
     }
 
+    const {hasClearUser} =props;
+
     return (
         <div className='search-users-container'>
             <form onSubmit={onSubmitHandler} >
@@ -33,11 +35,18 @@ const SearchUsers = (props) => {
                     type="submit"
                     className="mb-2"
                 />
-                <Button label="Clear users" 
+                {
+                    hasClearUser&&
+                    (
+                        <Button label="Clear users" 
                         buttontype="primary" 
                         fullwidth={true}
                         onClick={()=>props.onClearUser()}
                  />
+                    )
+
+                }
+                
 
 
             </form>
