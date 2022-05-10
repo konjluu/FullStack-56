@@ -1,0 +1,15 @@
+{
+  "name": "lesson12-nodejs",
+  "version": "1.0.0",
+  "description": "Learning Nodejs, ExpressJs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./server.js"
+  },
+  "author": "Cong luu",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
